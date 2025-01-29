@@ -7,17 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4159FE602D497D4400B79670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159FE5F2D497D4400B79670 /* AppDelegate.swift */; };
 		4159FE622D497D4600B79670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4159FE612D497D4600B79670 /* Assets.xcassets */; };
-		4159FE652D497D4600B79670 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4159FE632D497D4600B79670 /* MainMenu.xib */; };
+		416975F62D497E21004C8E93 /* metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975EC2D497E21004C8E93 /* metrics.swift */; };
+		416975F72D497E21004C8E93 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975ED2D497E21004C8E93 /* config.swift */; };
+		416975F82D497E21004C8E93 /* screen_capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975EE2D497E21004C8E93 /* screen_capture.swift */; };
+		416975F92D497E21004C8E93 /* renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975EF2D497E21004C8E93 /* renderer.swift */; };
+		416975FA2D497E21004C8E93 /* config_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F02D497E21004C8E93 /* config_view.swift */; };
+		416975FC2D497E21004C8E93 /* overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F22D497E21004C8E93 /* overlay.swift */; };
+		416975FD2D497E21004C8E93 /* error_message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F32D497E21004C8E93 /* error_message.swift */; };
+		416975FE2D497E21004C8E93 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F42D497E21004C8E93 /* main.swift */; };
+		416975FF2D497E21004C8E93 /* effect_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F52D497E21004C8E93 /* effect_view.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4159FE5C2D497D4400B79670 /* ScreenShader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScreenShader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4159FE5F2D497D4400B79670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4159FE612D497D4600B79670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4159FE642D497D4600B79670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4159FE662D497D4600B79670 /* ScreenShader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShader.entitlements; sourceTree = "<group>"; };
+		416975EC2D497E21004C8E93 /* metrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = metrics.swift; sourceTree = "<group>"; };
+		416975ED2D497E21004C8E93 /* config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
+		416975EE2D497E21004C8E93 /* screen_capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = screen_capture.swift; sourceTree = "<group>"; };
+		416975EF2D497E21004C8E93 /* renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = renderer.swift; sourceTree = "<group>"; };
+		416975F02D497E21004C8E93 /* config_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = config_view.swift; sourceTree = "<group>"; };
+		416975F22D497E21004C8E93 /* overlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = overlay.swift; sourceTree = "<group>"; };
+		416975F32D497E21004C8E93 /* error_message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = error_message.swift; sourceTree = "<group>"; };
+		416975F42D497E21004C8E93 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		416975F52D497E21004C8E93 /* effect_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = effect_view.swift; sourceTree = "<group>"; };
+		41C290CD2D49862B00675317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +52,9 @@
 				4159FE5E2D497D4400B79670 /* ScreenShader */,
 				4159FE5D2D497D4400B79670 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		4159FE5D2D497D4400B79670 /* Products */ = {
 			isa = PBXGroup;
@@ -50,10 +67,18 @@
 		4159FE5E2D497D4400B79670 /* ScreenShader */ = {
 			isa = PBXGroup;
 			children = (
-				4159FE5F2D497D4400B79670 /* AppDelegate.swift */,
+				41C290CD2D49862B00675317 /* Info.plist */,
 				4159FE612D497D4600B79670 /* Assets.xcassets */,
-				4159FE632D497D4600B79670 /* MainMenu.xib */,
 				4159FE662D497D4600B79670 /* ScreenShader.entitlements */,
+				416975F02D497E21004C8E93 /* config_view.swift */,
+				416975ED2D497E21004C8E93 /* config.swift */,
+				416975F52D497E21004C8E93 /* effect_view.swift */,
+				416975F32D497E21004C8E93 /* error_message.swift */,
+				416975F42D497E21004C8E93 /* main.swift */,
+				416975EC2D497E21004C8E93 /* metrics.swift */,
+				416975F22D497E21004C8E93 /* overlay.swift */,
+				416975EF2D497E21004C8E93 /* renderer.swift */,
+				416975EE2D497E21004C8E93 /* screen_capture.swift */,
 			);
 			path = ScreenShader;
 			sourceTree = "<group>";
@@ -117,7 +142,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4159FE622D497D4600B79670 /* Assets.xcassets in Resources */,
-				4159FE652D497D4600B79670 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,22 +152,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4159FE602D497D4400B79670 /* AppDelegate.swift in Sources */,
+				416975F72D497E21004C8E93 /* config.swift in Sources */,
+				416975FE2D497E21004C8E93 /* main.swift in Sources */,
+				416975F82D497E21004C8E93 /* screen_capture.swift in Sources */,
+				416975FC2D497E21004C8E93 /* overlay.swift in Sources */,
+				416975FD2D497E21004C8E93 /* error_message.swift in Sources */,
+				416975F92D497E21004C8E93 /* renderer.swift in Sources */,
+				416975FA2D497E21004C8E93 /* config_view.swift in Sources */,
+				416975F62D497E21004C8E93 /* metrics.swift in Sources */,
+				416975FF2D497E21004C8E93 /* effect_view.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		4159FE632D497D4600B79670 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4159FE642D497D4600B79670 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4159FE672D497D4600B79670 /* Debug */ = {
@@ -274,8 +295,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScreenShader/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ScreenShader;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -299,8 +322,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScreenShader/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ScreenShader;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
