@@ -8,7 +8,7 @@ The app works by taking a screen capture of the full screen, applying the shader
 
 Swap the red and blue color channels:
 
-![select effect and activate](https://github.com/branpk/ScreenShader/raw/main/images/screen_recording.png)
+![swap red and blue](https://github.com/branpk/ScreenShader/raw/main/images/red_blue_swap.png)
 
 **TODO**
 
