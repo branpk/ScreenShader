@@ -33,6 +33,11 @@
 		416975F42D497E21004C8E93 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		416975F52D497E21004C8E93 /* effect_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = effect_view.swift; sourceTree = "<group>"; };
 		41C290CD2D49862B00675317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		41C290CE2D4ABD2000675317 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		41C290D02D4AC3D600675317 /* select_activate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_activate.png; sourceTree = "<group>"; };
+		41C290D12D4AC3D600675317 /* toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toggle.png; sourceTree = "<group>"; };
+		41C290D32D4AC3DA00675317 /* select_activate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_activate.png; sourceTree = "<group>"; };
+		41C290D42D4AC3DA00675317 /* toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toggle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +54,8 @@
 		4159FE532D497D4400B79670 = {
 			isa = PBXGroup;
 			children = (
+				41C290D22D4AC3DA00675317 /* images */,
+				41C290CE2D4ABD2000675317 /* README.md */,
 				4159FE5E2D497D4400B79670 /* ScreenShader */,
 				4159FE5D2D497D4400B79670 /* Products */,
 			);
@@ -79,8 +86,28 @@
 				416975F22D497E21004C8E93 /* overlay.swift */,
 				416975EF2D497E21004C8E93 /* renderer.swift */,
 				416975EE2D497E21004C8E93 /* screen_capture.swift */,
+				41C290CF2D4AC3D600675317 /* images */,
 			);
 			path = ScreenShader;
+			sourceTree = "<group>";
+		};
+		41C290CF2D4AC3D600675317 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				41C290D02D4AC3D600675317 /* select_activate.png */,
+				41C290D12D4AC3D600675317 /* toggle.png */,
+			);
+			name = images;
+			path = ../../../Desktop/images;
+			sourceTree = "<group>";
+		};
+		41C290D22D4AC3DA00675317 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				41C290D32D4AC3DA00675317 /* select_activate.png */,
+				41C290D42D4AC3DA00675317 /* toggle.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
