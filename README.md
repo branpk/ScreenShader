@@ -2,7 +2,7 @@
 
 ScreenShader is a simple macOS utility that applies a user-specified fragment shader (color effect) to the screen. This provides more control than existing apps, which provide a fixed set of color effects.
 
-The app works by taking a screen capture of the full screen, applying the shader effect, and then rendering it to a full screen overlay.
+The app works by taking a live screen capture of the full screen, applying the shader effect, and then rendering it to a full screen overlay in real time. Depending on your machine, this may result in noticeable lag or input delay. Feel free to log a Github issue if this is significant on your machine.
 
 ## Examples
 
