@@ -17,6 +17,7 @@
 		416975FD2D497E21004C8E93 /* error_message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F32D497E21004C8E93 /* error_message.swift */; };
 		416975FE2D497E21004C8E93 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F42D497E21004C8E93 /* main.swift */; };
 		416975FF2D497E21004C8E93 /* effect_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F52D497E21004C8E93 /* effect_view.swift */; };
+		41C290E42D4B04A100675317 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 41C290E32D4B04A100675317 /* Sparkle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41C290E42D4B04A100675317 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +132,9 @@
 			dependencies = (
 			);
 			name = ScreenShader;
+			packageProductDependencies = (
+				41C290E32D4B04A100675317 /* Sparkle */,
+			);
 			productName = ScreenShader;
 			productReference = 4159FE5C2D497D4400B79670 /* ScreenShader.app */;
 			productType = "com.apple.product-type.application";
@@ -158,6 +163,9 @@
 				Base,
 			);
 			mainGroup = 4159FE532D497D4400B79670;
+			packageReferences = (
+				41C290E22D4B04A100675317 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			productRefGroup = 4159FE5D2D497D4400B79670 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -325,6 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScreenShader/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ScreenShader;
@@ -352,6 +361,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScreenShader/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ScreenShader;
@@ -392,6 +402,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		41C290E22D4B04A100675317 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		41C290E32D4B04A100675317 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41C290E22D4B04A100675317 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4159FE542D497D4400B79670 /* Project object */;
 }
