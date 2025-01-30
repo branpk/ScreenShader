@@ -37,6 +37,13 @@ The effect should now be visible. You can toggle it without opening the Settings
 
 ![toggle menu bar icon](https://github.com/branpk/ScreenShader/raw/main/images/toggle.png)
 
+## Platform support
+
+- macOS 13.7.3 or later
+- M1 or later (may work with Intel, but untested)
+
+I have only tested on my own machine, so please log a Github issue if you run into problems!
+
 ## License
 
 ScreenShader is licensed under the Apache-2.0 license OR MIT license.
