@@ -39,7 +39,7 @@ The effect should now be visible. You can toggle it without opening the Settings
 
 ## Platform support
 
-- macOS 13.7.3 or later
+- macOS 13.0 or later
 - M1 or later (may work with Intel, but untested)
 
 I have only tested on my own machine, so please log a Github issue if you run into problems!
