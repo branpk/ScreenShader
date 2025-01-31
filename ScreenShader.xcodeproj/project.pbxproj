@@ -35,8 +35,6 @@
 		416975F52D497E21004C8E93 /* effect_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = effect_view.swift; sourceTree = "<group>"; };
 		41C290CD2D49862B00675317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		41C290CE2D4ABD2000675317 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		41C290D02D4AC3D600675317 /* select_activate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_activate.png; sourceTree = "<group>"; };
-		41C290D12D4AC3D600675317 /* toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toggle.png; sourceTree = "<group>"; };
 		41C290DE2D4AC87F00675317 /* screen_recording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_recording.png; sourceTree = "<group>"; };
 		41C290DF2D4AC87F00675317 /* red_blue_swap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_blue_swap.png; sourceTree = "<group>"; };
 		41C290E02D4AC88E00675317 /* toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toggle.png; sourceTree = "<group>"; };
@@ -90,19 +88,8 @@
 				416975F22D497E21004C8E93 /* overlay.swift */,
 				416975EF2D497E21004C8E93 /* renderer.swift */,
 				416975EE2D497E21004C8E93 /* screen_capture.swift */,
-				41C290CF2D4AC3D600675317 /* images */,
 			);
 			path = ScreenShader;
-			sourceTree = "<group>";
-		};
-		41C290CF2D4AC3D600675317 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				41C290D02D4AC3D600675317 /* select_activate.png */,
-				41C290D12D4AC3D600675317 /* toggle.png */,
-			);
-			name = images;
-			path = ../../../Desktop/images;
 			sourceTree = "<group>";
 		};
 		41C290D22D4AC3DA00675317 /* images */ = {
@@ -345,7 +332,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.branpk.ScreenShader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -374,7 +361,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.branpk.ScreenShader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
