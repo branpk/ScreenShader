@@ -14,9 +14,7 @@ Swap the red and blue color channels:
 
 ## Download
 
-**TODO**
-
-## Usage
+The latest version can be downloaded from the [Releases](https://github.com/branpk/ScreenShader/releases/) page. Download `ScreenShader-x.x.x.zip`, unzip it, and copy it to your Applications folder. (You may also run it from your Downloads folder, but it won't receive updates.)
 
 When you first open the app, it will ask for Screen Recording permissions (since it needs to capture the contents of the screen so that it can re-render with effects applied). To provide these permissions:
 
@@ -28,6 +26,8 @@ When you first open the app, it will ask for Screen Recording permissions (since
 (If the popup appears again, try removing ScreenShader from the list using the "-" button and adding it again.)
 
 ![select effect and activate](https://github.com/branpk/ScreenShader/raw/main/images/screen_recording.png)
+
+## Usage
 
 Clicking on the app icon in the dock will open the Settings window, where you can select a pre-defined effect and activate it by clicking the checkbox:
 
