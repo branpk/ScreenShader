@@ -3,6 +3,19 @@
     <channel>
         <title>ScreenShader</title>
         <item>
+            <title>1.1.0</title>
+            <pubDate>Fri, 31 Jan 2025 17:50:18 -0800</pubDate>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader-1.1.0.zip" length="1871654" type="application/octet-stream" sparkle:edSignature="dbf+xG9KI+fc55TfdGlWeU8oElk+gCbJmUYnXYsWOnlQnshQ7eoLAFPS/I8zITMyvqlHqVAmbazykoGUQVrJDw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader4-3.delta" sparkle:deltaFrom="3" length="35482" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="puSMg+NE739VWyI0jm+Orpp1rmLUwae6Jd1ZZnP6dp362ooC8yCw3vX60k6WUQc7COgfr+Jkeh2sB+iou1QkDw=="/>
+                <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader4-2.delta" sparkle:deltaFrom="2" length="36374" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="VH94Q3YaSjybaaKrwIbJfAsCo6f4IY1sHnbBGtTPAJYA4LOflZ0uXgaK/SNoVYjCQr5z3RU/ED4X/tlx9k6LBQ=="/>
+                <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader4-1.delta" sparkle:deltaFrom="1" length="46194" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="cj88lPoSzuxxJguvdCSZbw3mTTWxdPg6UrcgSuPXL1hGmnfAZvLzzVKtlyMzzdUC5+wAdw5tWRpL/SGtJU+zBA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.0.2</title>
             <pubDate>Fri, 31 Jan 2025 15:12:27 -0800</pubDate>
             <sparkle:version>3</sparkle:version>
