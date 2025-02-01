@@ -33,6 +33,7 @@
 		416975F32D497E21004C8E93 /* error_message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = error_message.swift; sourceTree = "<group>"; };
 		416975F42D497E21004C8E93 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		416975F52D497E21004C8E93 /* effect_view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = effect_view.swift; sourceTree = "<group>"; };
+		4176335D2D4DB1EB00FCC2AF /* waves.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waves.gif; sourceTree = "<group>"; };
 		41C290CD2D49862B00675317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		41C290CE2D4ABD2000675317 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		41C290DE2D4AC87F00675317 /* screen_recording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen_recording.png; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		41C290D22D4AC3DA00675317 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				4176335D2D4DB1EB00FCC2AF /* waves.gif */,
 				41C290E12D4AC88E00675317 /* select_activate.png */,
 				41C290E02D4AC88E00675317 /* toggle.png */,
 				41C290DF2D4AC87F00675317 /* red_blue_swap.png */,

@@ -17,6 +17,7 @@ class MetalRenderer {
   private var textureCache: CVMetalTextureCache!
   private var activeEffectSource: String? = nil
   private var renderPipeline: MTLRenderPipelineState? = nil
+  private let baseTime = ProcessInfo.processInfo.systemUptime
 
   init(metalLayer: CAMetalLayer) {
     guard let device = MTLCreateSystemDefaultDevice() else {
@@ -56,9 +57,27 @@ class MetalRenderer {
         // A texture containing the input screen capture data.
         texture2d<float> inputTexture;
         // The texture coordinates for indexing into inputTexture at the current
-        // position.
+        // position. The origin is at the top left of the screen.
         float2 texCoord;
+        // The current position in pixels, with (0, 0) at the bottom left of the
+        // screen.
+        float2 screenPosition;
+        // The screen size in pixels.
+        float2 screenSize;
+        // The current position of the mouse cursor in pixels, with (0, 0) at
+        // the bottom left of the screen.
+        float2 mousePosition;
+        // The elapsed time since the system started in seconds.
+        float time;
       };
+
+      float2 texToScreen(float2 texCoord, float2 screenSize) {
+        return float2(texCoord.x * screenSize.x, (1 - texCoord.y) * screenSize.y);
+      }
+
+      float2 screenToTex(float2 screenPosition, float2 screenSize) {
+        return float2(screenPosition.x / screenSize.x, 1 - screenPosition.y / screenSize.y);
+      }
 
       \(effectSource)
 
@@ -87,11 +106,19 @@ class MetalRenderer {
 
       fragment float4 fragment_main(
         VertexOut in [[stage_in]],
-        texture2d<float> inTexture [[texture(0)]]
+        texture2d<float> inTexture [[texture(0)]],
+        constant float2 *screenSize [[buffer(0)]],
+        constant float2 *mousePosition [[buffer(1)]],
+        constant float *time [[buffer(2)]]
       ) {
         ShaderInput shaderInput;
         shaderInput.inputTexture = inTexture;
         shaderInput.texCoord = in.texCoord;
+        shaderInput.screenPosition = texToScreen(in.texCoord, *screenSize);
+        shaderInput.screenSize = *screenSize;
+        shaderInput.mousePosition = *mousePosition;
+        shaderInput.time = *time;
+
         return shaderFunction(shaderInput);
       }
       """
@@ -183,12 +210,22 @@ class MetalRenderer {
         height: Int(visibleFrame.height * scaleFactor)
       )
       encoder.setScissorRect(scissorRect)
-    }
 
-    if let renderPipeline = self.renderPipeline {
-      encoder.setRenderPipelineState(renderPipeline)
-      encoder.setFragmentTexture(texture, index: 0)
-      encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
+      if let renderPipeline = self.renderPipeline {
+        var screenSize = vector_float2(Float(screen.frame.width), Float(screen.frame.height))
+        var mousePosition = vector_float2(
+          Float(NSEvent.mouseLocation.x), Float(NSEvent.mouseLocation.y))
+        var time = Float(ProcessInfo.processInfo.systemUptime - self.baseTime)
+
+        encoder.setRenderPipelineState(renderPipeline)
+        encoder.setFragmentTexture(texture, index: 0)
+        encoder.setFragmentBytes(&screenSize, length: MemoryLayout<vector_float2>.stride, index: 0)
+        encoder.setFragmentBytes(
+          &mousePosition, length: MemoryLayout<vector_float2>.stride, index: 1)
+        encoder.setFragmentBytes(&time, length: MemoryLayout<Float>.stride, index: 2)
+
+        encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
+      }
     }
 
     encoder.endEncoding()

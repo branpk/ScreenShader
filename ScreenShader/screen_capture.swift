@@ -36,6 +36,7 @@ class ScreenCapture {
           value: 1, timescale: CMTimeScale(self.config.targetFPS))
         streamConfig.pixelFormat = kCVPixelFormatType_32BGRA
         streamConfig.capturesAudio = false
+        streamConfig.showsCursor = false
 
         self.stream = SCStream(filter: filter, configuration: streamConfig, delegate: nil)
         self.streamOutput = StreamOutput(onFrameReceived: self.onFrameReceived)

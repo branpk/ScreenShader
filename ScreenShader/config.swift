@@ -1,17 +1,34 @@
 import AppKit
 
 let defaultShaderSource: String = """
-  /*
+  /**************************************************************
+
   These are the inputs provided to the shader:
 
   struct ShaderInput {
     // A texture containing the input screen capture data.
     texture2d<float> inputTexture;
     // The texture coordinates for indexing into inputTexture at the current
-    // position.
+    // position. The origin is at the top left of the screen.
     float2 texCoord;
+    // The current position in pixels, with (0,0) at the bottom left of the
+    // screen.
+    float2 screenPosition;
+    // The screen size in pixels.
+    float2 screenSize;
+    // The current position of the mouse cursor in pixels, with (0,0) at
+    // the bottom left of the screen.
+    float2 mousePosition;
+    // The elapsed time since the system started in seconds.
+    float time;
   };
-  */
+
+  Additional utility functions:
+
+  float2 texToScreen(float2 texCoord, float2 screenSize)
+  float2 screenToTex(float2 screenPosition, float2 screenSize)
+
+  **************************************************************/
 
   // Don't change the name or signature of this function:
   float4 shaderFunction(ShaderInput in) {
@@ -29,22 +46,111 @@ let defaultShaderSource: String = """
   }
   """
 
-let predefinedShaders: [String: String] = [
-  "Swap red-blue channels": """
-  float4 shaderFunction(ShaderInput in) {
-    constexpr sampler s(address::clamp_to_edge, filter::linear);
-    float4 inputColor = in.inputTexture.sample(s, in.texCoord);
-    return float4(inputColor.b, inputColor.g, inputColor.r, inputColor.a);
-  }
-  """,
-  "Grey scale": """
-  float4 shaderFunction(ShaderInput in) {
-    constexpr sampler s(address::clamp_to_edge, filter::linear);
-    float4 inputColor = in.inputTexture.sample(s, in.texCoord);
-    float grey = dot(inputColor.rgb, float3(0.299, 0.587, 0.114));
-    return float4(grey, grey, grey, inputColor.a);
-  }
-  """,
+let predefinedShaders: [(String, String)] = [
+  (
+    "Swap red-blue channels",
+    """
+    float4 shaderFunction(ShaderInput in) {
+      constexpr sampler s(address::clamp_to_edge, filter::linear);
+      float4 inputColor = in.inputTexture.sample(s, in.texCoord);
+      return float4(inputColor.b, inputColor.g, inputColor.r, inputColor.a);
+    }
+    """
+  ),
+  (
+    "Grey scale",
+    """
+    float4 shaderFunction(ShaderInput in) {
+      constexpr sampler s(address::clamp_to_edge, filter::linear);
+      float4 inputColor = in.inputTexture.sample(s, in.texCoord);
+      float grey = dot(inputColor.rgb, float3(0.299, 0.587, 0.114));
+      return float4(grey, grey, grey, inputColor.a);
+    }
+    """
+  ),
+  (
+    "Waves",
+    """
+    struct Wave {
+      float angle;
+      float speed;
+      float amp;
+      float freq;
+      float flatness;
+    };
+
+    float waveHeight(Wave wave, float2 pos, float t) {
+      float2 dir = float2(cos(wave.angle), sin(wave.angle));
+      float phase = 2.0 * M_PI_F * wave.freq * (t - dot(pos, dir) / wave.speed);
+
+      float r = sin(phase);
+      r = (r + 1.0) * 0.5;
+      r = pow(r, wave.flatness);
+      return r * wave.amp;
+    }
+
+    float2 waveGradient(Wave wave, float2 pos, float t) {
+        float2 dir = float2(cos(wave.angle), sin(wave.angle));
+        float phase = 2.0 * M_PI_F * wave.freq * (t - dot(pos, dir) / wave.speed);
+
+        float r = sin(phase);
+        r = (r + 1.0) * 0.5;
+
+        float dr_dp = 0.5 * cos(phase);
+        float dpow_dr = wave.flatness * pow(r, wave.flatness - 1.0);
+        float dphase = -2.0 * M_PI_F * wave.freq / wave.speed;
+
+        float dr_dpos = dpow_dr * dr_dp * dphase;
+        return wave.amp * dr_dpos * dir;
+    }
+
+    float4 shaderFunction(ShaderInput in) {
+      constexpr sampler s(address::clamp_to_edge, filter::linear);
+
+      Wave waves[] = {
+        Wave {
+          .angle = 2 * M_PI_F * 0.6,
+          .speed = 0.5,
+          .amp = 0.5,
+          .freq = 0.5,
+          .flatness = 1, //0.9,
+        },
+        Wave {
+          .angle = 2 * M_PI_F * 0.9,
+          .speed = 0.5,
+          .amp = 0.4,
+          .freq = 0.8,
+          .flatness = 1, //0.7,
+        },
+        Wave {
+          .angle = 2 * M_PI_F * 0.05,
+          .speed = 0.7,
+          .amp = 0.2,
+          .freq = 1.2,
+          .flatness = 1, //0.8,
+        },
+      };
+
+      float2 pos = in.screenPosition / 300;
+
+      float height = 0;
+      float2 grad = 0;
+      for (Wave wave : waves) {
+        height += waveHeight(wave, pos, in.time);
+        grad += waveGradient(wave, pos, in.time);
+      }
+
+      float2 screenOffset = float2(0, -20) * height;
+      float2 texCoord = screenToTex(in.screenPosition + screenOffset, in.screenSize);
+
+      float4 color = in.inputTexture.sample(s, texCoord);
+
+      float lighting = 1 + dot(grad, float2(-1, -1)) * 0.05;
+
+      return float4(lighting * color.rgb, 1);
+    }
+    """
+  ),
 ]
 
 class Config: Codable {

@@ -55,13 +55,13 @@ class OverlayController: NSObject, MTKViewDelegate {
     self.frameID = frameID
     self.contentBuffer = contentBuffer
 
-    self.render()
+    // self.render()
   }
 
   func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
 
   func draw(in view: MTKView) {
-    // self.render()
+    self.render()
   }
 
   func render() {
