@@ -3,6 +3,20 @@
     <channel>
         <title>ScreenShader</title>
         <item>
+            <title>1.1.1</title>
+            <pubDate>Fri, 14 Mar 2025 08:37:31 -0700</pubDate>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>1.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader-1.1.1.zip" length="1877948" type="application/octet-stream" sparkle:edSignature="+Ys1/bGjZCNvC9MkUK7kkq1kgJMv0Tjamdb8AVSSzZiJUFffuBRnFzoO+vvXjwm9c4+TMQikMidub5cAVyNaCQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader-1.1.15-4.delta" sparkle:deltaFrom="4" length="89610" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="eQdgOUA0P3B78pNdf1I0ZTJSYhH1dgBVLaRHH9+Euk5+LCFu+GQ5E+yXSR8fkU8TFVESs00t0VTIoWvkJZJsBA=="/>
+                <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader-1.1.15-3.delta" sparkle:deltaFrom="3" length="92430" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="rbJqYDTbcJPf0Oj03eG3+g0duMPER1OJFiIyXSlXQp7u8AfyJYqqMLbHZ3VeGzB95RC3RuFITa/JvLZQXewODg=="/>
+                <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader-1.1.15-2.delta" sparkle:deltaFrom="2" length="92806" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="SZiXrk9nWGKyJfNhRO6hnix3buU/JGS3DAgZ2F9L+8w2bUF/VOTJyvNpyReDASSRUi7cSCI2preLtY8g1LxrBg=="/>
+                <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader-1.1.15-1.delta" sparkle:deltaFrom="1" length="99850" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="AZtRy7LJFle0iBsrN4jrUXj+IU3/eNcFi4A/xhLnJfqSh3dvQp73QFafTxjX+vi0mRoHBObljGaiZs1UdeeNDg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.1.0</title>
             <pubDate>Fri, 31 Jan 2025 17:50:18 -0800</pubDate>
             <sparkle:version>4</sparkle:version>
@@ -25,17 +39,6 @@
             <sparkle:deltas>
                 <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader3-2.delta" sparkle:deltaFrom="2" length="11706" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="k1z9Q8VLsbAvLcREbjPbShyWHx1yyTFdGSgPIzY8uOs8KbRvJlHjMIMiFjUy0G2IxfgKpju0NSjh2YtFiq9kDA=="/>
                 <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader3-1.delta" sparkle:deltaFrom="1" length="34202" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="aVD5oi5J2QVokQo5ExLdjkz0RsjMcgXYdr5spXkjr/3GhtE1wu4HP7Va8LnrvfRbTNUeThyWHNfKaCMa87zJDg=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>1.0.1</title>
-            <pubDate>Fri, 31 Jan 2025 14:58:14 -0800</pubDate>
-            <sparkle:version>2</sparkle:version>
-            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader-1.0.1.zip" length="1870572" type="application/octet-stream" sparkle:edSignature="NxjiuV5W5ccHtpZhgg4zQvF/jec2iAcZ/TW78szyg2DlVeJlXsPwdc7TcOB4rt6al5GYsDxSfgwnkEBsHHbpDg=="/>
-            <sparkle:deltas>
-                <enclosure url="https://github.com/branpk/ScreenShader/raw/main/releases/ScreenShader2-1.delta" sparkle:deltaFrom="1" length="34290" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="e62sVOqM5vH95eVSlqfrdgpm1fl517lpZbJ+oO3gcIvmyVqfCeZSe5PgfOvBVu4nVYXvbZehT1SzntrVYhEMCA=="/>
             </sparkle:deltas>
         </item>
         <item>
