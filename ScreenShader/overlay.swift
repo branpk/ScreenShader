@@ -11,6 +11,7 @@ class OverlayController: NSObject, MTKViewDelegate {
   private var renderer: MetalRenderer!
   private var contentBuffer: CVPixelBuffer?
   private var frameID: Int?
+  private let dispatchQueue = DispatchQueue(label: "overlayController.queue")
 
   init(config: Config, metrics: Metrics, errorMessage: ErrorMessage) {
     self.config = config
@@ -52,8 +53,10 @@ class OverlayController: NSObject, MTKViewDelegate {
     let frameID = self.metrics.newFrameID()
     self.metrics.recordScreenCapture(frameID: frameID)
 
-    self.frameID = frameID
-    self.contentBuffer = contentBuffer
+    self.dispatchQueue.async {
+      self.frameID = frameID
+      self.contentBuffer = contentBuffer
+    }
 
     // self.render()
   }
@@ -65,12 +68,19 @@ class OverlayController: NSObject, MTKViewDelegate {
   }
 
   func render() {
-    if let contentBuffer = self.contentBuffer, let frameID = self.frameID {
-      self.renderer.renderContentBuffer(window: self.window, contentBuffer: contentBuffer)
+    var contentBuffer: CVPixelBuffer?
+    var frameID: Int?
 
+    self.dispatchQueue.sync {
+        contentBuffer = self.contentBuffer
+        frameID = self.frameID
+        self.frameID = nil
+        self.contentBuffer = nil
+    }
+    
+    if let contentBuffer = contentBuffer, let frameID = frameID {
+      self.renderer.renderContentBuffer(window: self.window, contentBuffer: contentBuffer)
       self.metrics.recordRender(frameID: frameID)
-      self.frameID = nil
-      self.contentBuffer = nil
     }
   }
 
