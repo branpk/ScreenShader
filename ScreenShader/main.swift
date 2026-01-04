@@ -1,6 +1,14 @@
 import AppKit
+import Carbon
 import CoreGraphics
 import Sparkle
+
+// Carbon hotkey handler
+func hotkeyHandler(nextHandler: EventHandlerCallRef?, event: EventRef?, userData: UnsafeMutableRawPointer?) -> OSStatus {
+  Logger.shared.log("Global hotkey Cmd+Shift+1 pressed, quitting app")
+  NSApp.terminate(nil)
+  return noErr
+}
 
 class AppDelegate: NSObject, NSApplicationDelegate {
   private var updaterController: SPUStandardUpdaterController!
@@ -11,10 +19,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   private var overlayController: OverlayController!
   private var statusItem: NSStatusItem!
   private var configWindowController: ConfigWindowController?
+  private var hotkeyRef: EventHotKeyRef?
+
+  private func registerQuitHotkey() {
+    // Cmd+Shift+1: modifiers = cmdKey + shiftKey, keyCode = 18 (1 key)
+    var hotKeyID = EventHotKeyID()
+    hotKeyID.signature = OSType(0x5353_4B59)  // "SSKY" as FourCharCode
+    hotKeyID.id = 1
+
+    var eventType = EventTypeSpec(eventClass: OSType(kEventClassKeyboard), eventKind: UInt32(kEventHotKeyPressed))
+
+    InstallEventHandler(
+      GetApplicationEventTarget(),
+      hotkeyHandler,
+      1,
+      &eventType,
+      nil,
+      nil
+    )
+
+    let modifiers: UInt32 = UInt32(cmdKey | shiftKey)
+    let keyCode: UInt32 = 18  // "1" key
+
+    let status = RegisterEventHotKey(keyCode, modifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyRef)
+    if status == noErr {
+      Logger.shared.log("Registered global hotkey Cmd+Shift+1")
+    } else {
+      Logger.shared.log("Failed to register hotkey: \(status)")
+    }
+  }
 
   func applicationDidFinishLaunching(_ notification: Notification) {
     self.updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
-    
+
+    // Global hotkey: Cmd+Shift+1 to quit (using Carbon for no accessibility requirement)
+    registerQuitHotkey()
+
     if CGRequestScreenCaptureAccess() {
       print("Screen capture access granted.")
     } else {
@@ -162,7 +202,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 }
 
+Logger.shared.log("App starting")
 let app = NSApplication.shared
 let delegate = AppDelegate()
 app.delegate = delegate
+Logger.shared.log("App delegate set, running app")
 app.run()

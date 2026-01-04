@@ -151,6 +151,31 @@ let predefinedShaders: [(String, String)] = [
     }
     """
   ),
+  (
+    "Noise",
+    """
+    float fast_noise(float2 p, float t) {
+      float3 p3 = fract(float3(p.xyx) * 0.1031);
+      p3 += dot(p3, p3.yzx + 33.33);
+      return fract((p3.x + p3.y) * p3.z + t);
+    }
+
+    float4 shaderFunction(ShaderInput in) {
+      constexpr sampler s(address::clamp_to_edge, filter::linear);
+
+      float2 uv = screenToTex(in.screenPosition, in.screenSize);
+      float4 color = in.inputTexture.sample(s, uv);
+
+      // Generate grain (0.05 intensity)
+      float grain = fast_noise(in.screenPosition, in.time);
+      float noiseShift = (grain - 0.5) * 0.05;
+
+      float3 finalColor = color.rgb + noiseShift;
+
+      return float4(finalColor, 1.0);
+    }
+    """
+  ),
 ]
 
 class Config: Codable {
