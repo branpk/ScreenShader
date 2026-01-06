@@ -1,4 +1,5 @@
 import ScreenCaptureKit
+import AppKit
 
 class ScreenCapture {
   var config: Config! = nil
@@ -18,20 +19,47 @@ class ScreenCapture {
     Task {
       do {
         let content = try await SCShareableContent.current
-        guard let display = content.displays.first else {
-          fatalError("No displays found.")
+
+        Logger.shared.log("startCapture: Available displays from SCShareableContent:")
+        for d in content.displays {
+          Logger.shared.log("  - displayID: \(d.displayID), width: \(d.width), height: \(d.height)")
         }
+
+        Logger.shared.log("startCapture: Available NSScreens:")
+        for screen in NSScreen.screens {
+          let displayID = screen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID ?? 0
+          Logger.shared.log("  - displayID: \(displayID), frame: \(screen.frame), isMain: \(screen == NSScreen.main)")
+        }
+
+        // Find the display matching NSScreen.main
+        guard let mainScreen = NSScreen.main,
+              let mainDisplayID = mainScreen.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID else {
+          Logger.shared.log("startCapture: No main screen found, skipping capture.")
+          self.capturing = false
+          return
+        }
+
+        Logger.shared.log("startCapture: Main screen displayID: \(mainDisplayID), frame: \(mainScreen.frame)")
+
+        guard let display = content.displays.first(where: { $0.displayID == mainDisplayID }) ?? content.displays.first else {
+          Logger.shared.log("startCapture: No displays found, skipping capture.")
+          self.capturing = false
+          return
+        }
+
+        Logger.shared.log("startCapture: Selected display - displayID: \(display.displayID), width: \(display.width), height: \(display.height)")
 
         let excludedWindows = content.windows.filter { window in
           self.excludedWindowIDs.contains(window.windowID)
         }
         let filter = SCContentFilter(display: display, excludingWindows: excludedWindows)
 
-        let scaleFactor = NSScreen.main?.backingScaleFactor ?? 1.0
+        let scaleFactor = mainScreen.backingScaleFactor
 
         let streamConfig = SCStreamConfiguration()
         streamConfig.width = Int(CGFloat(display.width) * scaleFactor)
         streamConfig.height = Int(CGFloat(display.height) * scaleFactor)
+        Logger.shared.log("startCapture: Stream config - width: \(streamConfig.width), height: \(streamConfig.height), scaleFactor: \(scaleFactor)")
         streamConfig.minimumFrameInterval = CMTime(
           value: 1, timescale: CMTimeScale(self.config.targetFPS))
         streamConfig.pixelFormat = kCVPixelFormatType_32BGRA
@@ -47,7 +75,8 @@ class ScreenCapture {
         try await self.stream!.startCapture()
         print("Started screen capture")
       } catch {
-        fatalError("Failed to start screen capture: \(error.localizedDescription)")
+        print("Failed to start screen capture: \(error.localizedDescription)")
+        self.capturing = false
       }
     }
   }
@@ -75,6 +104,13 @@ class ScreenCapture {
       self.startCapture()
     } else {
       self.stopCapture()
+    }
+  }
+
+  func restartCapture() {
+    stopCapture()
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+      self.startCapture()
     }
   }
 }

@@ -18,6 +18,7 @@
 		416975FE2D497E21004C8E93 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F42D497E21004C8E93 /* main.swift */; };
 		416975FF2D497E21004C8E93 /* effect_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416975F52D497E21004C8E93 /* effect_view.swift */; };
 		41C290E42D4B04A100675317 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 41C290E32D4B04A100675317 /* Sparkle */; };
+		AABBCC012D58000000000001 /* logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABBCC002D58000000000001 /* logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		41C290DF2D4AC87F00675317 /* red_blue_swap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_blue_swap.png; sourceTree = "<group>"; };
 		41C290E02D4AC88E00675317 /* toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toggle.png; sourceTree = "<group>"; };
 		41C290E12D4AC88E00675317 /* select_activate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_activate.png; sourceTree = "<group>"; };
+		AABBCC002D58000000000001 /* logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				416975ED2D497E21004C8E93 /* config.swift */,
 				416975F52D497E21004C8E93 /* effect_view.swift */,
 				416975F32D497E21004C8E93 /* error_message.swift */,
+				AABBCC002D58000000000001 /* logger.swift */,
 				416975F42D497E21004C8E93 /* main.swift */,
 				416975EC2D497E21004C8E93 /* metrics.swift */,
 				416975F22D497E21004C8E93 /* overlay.swift */,
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				416975F72D497E21004C8E93 /* config.swift in Sources */,
+				AABBCC012D58000000000001 /* logger.swift in Sources */,
 				416975FE2D497E21004C8E93 /* main.swift in Sources */,
 				416975F82D497E21004C8E93 /* screen_capture.swift in Sources */,
 				416975FC2D497E21004C8E93 /* overlay.swift in Sources */,

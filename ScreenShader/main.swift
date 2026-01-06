@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func applicationDidFinishLaunching(_ notification: Notification) {
     self.updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
-    
+
     if CGRequestScreenCaptureAccess() {
       print("Screen capture access granted.")
     } else {
@@ -162,7 +162,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 }
 
+Logger.shared.log("App starting")
 let app = NSApplication.shared
 let delegate = AppDelegate()
 app.delegate = delegate
+Logger.shared.log("App delegate set, running app")
 app.run()
